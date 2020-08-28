@@ -1,6 +1,7 @@
 require('dotenv/config');
 const express = require('express');
 const staticMiddleware = require('./static-middleware');
+const db = require('./database');
 
 const app = express();
 
