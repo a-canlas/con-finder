@@ -105,6 +105,21 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     this.state = {
       listings: null
     };
+    this.getConventions = this.getConventions.bind(this);
+  }
+
+  componentDidMount() {
+    this.getConventions();
+  }
+
+  getConventions() {
+    fetch('/api/all-conventions').then(data => data.json()).then(conventions => {
+      this.setState({
+        listings: conventions
+      });
+    }).catch(err => {
+      console.error(err);
+    });
   }
 
   render() {
