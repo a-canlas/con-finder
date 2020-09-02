@@ -97,6 +97,8 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ConList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConList */ "./client/components/ConList.jsx");
+
 
 
 class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
@@ -106,11 +108,10 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       listings: null
     };
     this.getConventions = this.getConventions.bind(this);
-  }
+  } // componentDidMount() {
+  //   this.getConventions();
+  // }
 
-  componentDidMount() {
-    this.getConventions();
-  }
 
   getConventions() {
     fetch('/api/all-conventions').then(data => data.json()).then(conventions => {
@@ -123,12 +124,50 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   }
 
   render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Furry Con Finder");
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      allCons: this.state.listings
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Furry Con Finder"));
   }
 
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./client/components/ConList.jsx":
+/*!***************************************!*\
+  !*** ./client/components/ConList.jsx ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+class ConList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  generateList() {
+    if (!this.props.allCons) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "loader center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-paw fa-spin"
+      }));
+    } else {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "List here...");
+    }
+  }
+
+  render() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.generateList());
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ConList);
 
 /***/ }),
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import ConList from './ConList';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,9 +10,9 @@ class App extends React.Component {
     this.getConventions = this.getConventions.bind(this);
   }
 
-  componentDidMount() {
-    this.getConventions();
-  }
+  // componentDidMount() {
+  //   this.getConventions();
+  // }
 
   getConventions() {
     fetch('/api/all-conventions')
@@ -26,7 +27,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <p>Furry Con Finder</p>
+      <>
+        <ConList allCons={this.state.listings} />
+        <p>Furry Con Finder</p>
+      </>
     );
   }
 }
