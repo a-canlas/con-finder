@@ -100,8 +100,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listings: null
+    };
+  }
+
   render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "React Boilerplate");
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Furry Con Finder");
   }
 
 }
