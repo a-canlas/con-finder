@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
 class ConList extends React.Component {
   generateList() {
@@ -10,7 +11,7 @@ class ConList extends React.Component {
       );
     } else {
       return (
-        <div>List here...</div>
+        <Container></Container>
       );
     }
   }
