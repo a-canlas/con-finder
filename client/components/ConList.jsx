@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
+import Convention from './Convention';
 
 class ConList extends React.Component {
   generateList() {
@@ -10,8 +11,16 @@ class ConList extends React.Component {
         </h1>
       );
     } else {
+      const allCons = this.props.allCons;
+      const conElements = allCons.map(con => {
+        return (
+          <Convention key={con.conventionId} conImage={con.imagePath} conName={con.name} conCity={con.city} conState={con.state} />
+        );
+      });
       return (
-        <Container></Container>
+        <Container>
+          {conElements}
+        </Container>
       );
     }
   }
