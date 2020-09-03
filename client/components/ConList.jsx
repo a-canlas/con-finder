@@ -5,7 +5,7 @@ class ConList extends React.Component {
     if (!this.props.allCons) {
       return (
         <h1 className="loader center">
-          <i className="fas fa-paw fa-spin"/>
+          <i className="fas fa-spinner fa-pulse"/>
         </h1>
       );
     } else {

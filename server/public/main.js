@@ -108,10 +108,11 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       listings: null
     };
     this.getConventions = this.getConventions.bind(this);
-  } // componentDidMount() {
-  //   this.getConventions();
-  // }
+  }
 
+  componentDidMount() {
+    this.getConventions();
+  }
 
   getConventions() {
     fetch('/api/all-conventions').then(data => data.json()).then(conventions => {
@@ -154,7 +155,7 @@ class ConList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "loader center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-paw fa-spin"
+        className: "fas fa-spinner fa-pulse"
       }));
     } else {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "List here...");

@@ -10,9 +10,9 @@ class App extends React.Component {
     this.getConventions = this.getConventions.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.getConventions();
-  // }
+  componentDidMount() {
+    this.getConventions();
+  }
 
   getConventions() {
     fetch('/api/all-conventions')
