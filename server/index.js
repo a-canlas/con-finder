@@ -15,7 +15,7 @@ app.get('/api/health-check', (req, res, next) => {
 });
 
 app.get('/api/all-conventions', (req, res, next) => {
-  const sql = `SELECT "conventionId", "name", "website", "imagePath", "startDate", "endDate", "venueName", "address", "city", "state", "longitude", "latitude"
+  const sql = `SELECT "conventionId", "name", "website", "imagePath", "startDate", "endDate", "venueName", "address", "city", "state", "country", "phone", "longitude", "latitude"
   FROM conventions AS c
   JOIN venues AS v
   ON c."venueId" = v."venueId";`;
