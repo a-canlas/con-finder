@@ -5,7 +5,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listings: null
+      listings: null,
+      modal: {
+        visible: false,
+        content: null
+      }
     };
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
@@ -19,7 +23,7 @@ class App extends React.Component {
     const conDetail = this.state.listings.filter(listing => {
       return listing.conventionId === id;
     });
-    console.log(conDetail);
+    this.setState({ modal: { content: conDetail[0] } });
   }
 
   getConventions() {
