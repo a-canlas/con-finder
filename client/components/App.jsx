@@ -5,13 +5,25 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listings: null
+      listings: null,
+      modal: {
+        visible: false,
+        content: null
+      }
     };
     this.getConventions = this.getConventions.bind(this);
+    this.getConDetails = this.getConDetails.bind(this);
   }
 
   componentDidMount() {
     this.getConventions();
+  }
+
+  getConDetails(id) {
+    const conDetail = this.state.listings.filter(listing => {
+      return listing.conventionId === id;
+    });
+    this.setState({ modal: { content: conDetail[0] } });
   }
 
   getConventions() {
@@ -28,7 +40,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <ConList allCons={this.state.listings} />
+        <ConList allCons={this.state.listings} getConDetails={this.getConDetails} />
         <p>Furry Con Finder</p>
       </>
     );

@@ -105,13 +105,29 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listings: null
+      listings: null,
+      modal: {
+        visible: false,
+        content: null
+      }
     };
     this.getConventions = this.getConventions.bind(this);
+    this.getConDetails = this.getConDetails.bind(this);
   }
 
   componentDidMount() {
     this.getConventions();
+  }
+
+  getConDetails(id) {
+    const conDetail = this.state.listings.filter(listing => {
+      return listing.conventionId === id;
+    });
+    this.setState({
+      modal: {
+        content: conDetail[0]
+      }
+    });
   }
 
   getConventions() {
@@ -126,7 +142,8 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConList__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      allCons: this.state.listings
+      allCons: this.state.listings,
+      getConDetails: this.getConDetails
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Furry Con Finder"));
   }
 
@@ -174,10 +191,12 @@ class ConList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           sm: 6,
           md: 4
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Convention__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          conId: con.conventionId,
           conImage: con.imagePath,
           conName: con.name,
           conCity: con.city,
-          conState: con.state
+          conState: con.state,
+          sendId: this.props.getConDetails
         }));
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, conElements));
@@ -210,8 +229,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Convention = props => {
+  const id = props.conId;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    className: "my-1"
+    className: "my-1",
+    onClick: () => props.sendId(id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Img, {
     className: "card-img p-2",
     variant: "top",
