@@ -18,7 +18,7 @@ class ConList extends React.Component {
         return (
 
           <Col key={con.conventionId} xs={12} sm={6} md={4}>
-            <Convention conImage={con.imagePath} conName={con.name} conCity={con.city} conState={con.state} />
+            <Convention conId={con.conventionId} conImage={con.imagePath} conName={con.name} conCity={con.city} conState={con.state} sendId={this.props.getConDetails} />
           </Col>
 
         );
