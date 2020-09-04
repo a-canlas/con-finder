@@ -6,7 +6,7 @@ const ConDetails = props => {
   return (
     <Modal
       show={props.visible}
-      onHide={props.hide}
+      onHide={() => props.hide()}
       backdrop="static"
 
     >
@@ -20,7 +20,7 @@ const ConDetails = props => {
         <p><strong>Website: </strong> <a href={`http://${props.website}`} target="__blank"></a>{props.website}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="info" onClick={props.hide}>Close</Button>
+        <Button variant="info" onClick={() => props.hide()}>Close</Button>
       </Modal.Footer>
     </Modal>
   );
