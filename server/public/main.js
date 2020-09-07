@@ -234,8 +234,8 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       conCity = this.state.modal.content.city;
       conState = this.state.modal.content.state;
       conCountry = this.state.modal.content.country;
-      conStart = this.state.modal.content.startDate;
-      conEnd = this.state.modal.content.endDate;
+      conStart = this.formatDate(this.state.modal.content.startDate);
+      conEnd = this.formatDate(this.state.modal.content.endDate);
       conSite = this.state.modal.content.website;
     }
 
@@ -250,8 +250,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       country: conCountry,
       startDate: conStart,
       endDate: conEnd,
-      website: conSite,
-      formatDate: this.formatDate
+      website: conSite
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConList__WEBPACK_IMPORTED_MODULE_1__["default"], {
       allCons: this.state.listings,
       getConDetails: this.getConDetails,

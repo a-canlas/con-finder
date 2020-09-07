@@ -112,8 +112,8 @@ class App extends React.Component {
       conCity = this.state.modal.content.city;
       conState = this.state.modal.content.state;
       conCountry = this.state.modal.content.country;
-      conStart = this.state.modal.content.startDate;
-      conEnd = this.state.modal.content.endDate;
+      conStart = this.formatDate(this.state.modal.content.startDate);
+      conEnd = this.formatDate(this.state.modal.content.endDate);
       conSite = this.state.modal.content.website;
     }
     return (
@@ -130,7 +130,6 @@ class App extends React.Component {
           startDate={conStart}
           endDate={conEnd}
           website={conSite}
-          formatDate={this.formatDate}
         />
         <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
         <p>Furry Con Finder</p>
