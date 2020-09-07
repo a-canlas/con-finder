@@ -36,11 +36,28 @@ class App extends React.Component {
     fetch('/api/all-conventions')
       .then(data => data.json())
       .then(conventions => {
+
         this.setState({ listings: conventions });
       })
       .catch(err => {
         console.error(err);
       });
+  }
+
+  formatDate(dateString) {
+    const index = dateString.indexOf('T');
+    const splitDate = dateString.slice(0, i).split();
+    const splitMonth = splitDate[0];
+    let month;
+    switch (month) {
+      case 1:
+        year = 'January';
+        break;
+      case 2:
+        year = 'February';
+        break;
+    }
+
   }
 
   render() {
