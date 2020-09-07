@@ -339,6 +339,8 @@ class ConList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     } else {
       const allCons = this.props.allCons;
       const conElements = allCons.map(con => {
+        const startDate = this.props.formatDate(con.startDate);
+        const endDate = this.props.formatDate(con.endDate);
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: con.conventionId,
           xs: 12,
@@ -350,7 +352,9 @@ class ConList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           conName: con.name,
           conCity: con.city,
           conState: con.state,
-          sendId: this.props.getConDetails
+          sendId: this.props.getConDetails,
+          startDate: startDate,
+          endDate: endDate
         }));
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, conElements));
@@ -391,7 +395,7 @@ const Convention = props => {
     className: "card-img p-2",
     variant: "top",
     src: props.conImage
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Title, null, props.conName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Text, null, props.conCity, ", ", props.conState)));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Title, null, props.conName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Text, null, props.startDate, " - ", props.endDate), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Text, null, props.conCity, ", ", props.conState)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Convention);
