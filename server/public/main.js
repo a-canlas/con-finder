@@ -116,6 +116,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.formatDate = this.formatDate.bind(this);
   }
 
   componentDidMount() {
@@ -249,10 +250,12 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       country: conCountry,
       startDate: conStart,
       endDate: conEnd,
-      website: conSite
+      website: conSite,
+      formatDate: this.formatDate
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConList__WEBPACK_IMPORTED_MODULE_1__["default"], {
       allCons: this.state.listings,
-      getConDetails: this.getConDetails
+      getConDetails: this.getConDetails,
+      formatDate: this.formatDate
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Furry Con Finder"));
   }
 

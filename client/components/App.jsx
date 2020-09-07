@@ -15,6 +15,7 @@ class App extends React.Component {
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.formatDate = this.formatDate.bind(this);
   }
 
   componentDidMount() {
@@ -129,8 +130,9 @@ class App extends React.Component {
           startDate={conStart}
           endDate={conEnd}
           website={conSite}
+          formatDate={this.formatDate}
         />
-        <ConList allCons={this.state.listings} getConDetails={this.getConDetails} />
+        <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
         <p>Furry Con Finder</p>
       </>
     );
