@@ -15,10 +15,12 @@ class ConList extends React.Component {
     } else {
       const allCons = this.props.allCons;
       const conElements = allCons.map(con => {
+        const startDate = this.props.formatDate(con.startDate);
+        const endDate = this.props.formatDate(con.endDate);
         return (
 
           <Col key={con.conventionId} xs={12} sm={6} md={4}>
-            <Convention conId={con.conventionId} conImage={con.imagePath} conName={con.name} conCity={con.city} conState={con.state} sendId={this.props.getConDetails} />
+            <Convention conId={con.conventionId} conImage={con.imagePath} conName={con.name} conCity={con.city} conState={con.state} sendId={this.props.getConDetails} startDate={startDate} endDate={endDate}/>
           </Col>
 
         );

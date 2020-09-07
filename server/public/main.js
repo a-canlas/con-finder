@@ -116,6 +116,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.formatDate = this.formatDate.bind(this);
   }
 
   componentDidMount() {
@@ -153,6 +154,68 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     });
   }
 
+  formatDate(dateString) {
+    const i = dateString.indexOf('T');
+    const splitDate = dateString.slice(0, i).split('-');
+    const year = splitDate.shift();
+    const oldMonth = splitDate.shift();
+    splitDate.push(year);
+    let month;
+
+    switch (oldMonth) {
+      case '01':
+        month = 'January';
+        break;
+
+      case '02':
+        month = 'February';
+        break;
+
+      case '03':
+        month = 'March';
+        break;
+
+      case '04':
+        month = 'April';
+        break;
+
+      case '05':
+        month = 'May';
+        break;
+
+      case '06':
+        month = 'June';
+        break;
+
+      case '07':
+        month = 'July';
+        break;
+
+      case '08':
+        month = 'August';
+        break;
+
+      case '09':
+        month = 'September';
+        break;
+
+      case '10':
+        month = 'October';
+        break;
+
+      case '11':
+        month = 'November';
+        break;
+
+      case '12':
+        month = 'December';
+        break;
+    }
+
+    splitDate.unshift(month);
+    return splitDate.join(' ');
+  }
+
   render() {
     let conName = 'name';
     let conAddress = 'address';
@@ -171,8 +234,8 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       conCity = this.state.modal.content.city;
       conState = this.state.modal.content.state;
       conCountry = this.state.modal.content.country;
-      conStart = this.state.modal.content.startDate;
-      conEnd = this.state.modal.content.endDate;
+      conStart = this.formatDate(this.state.modal.content.startDate);
+      conEnd = this.formatDate(this.state.modal.content.endDate);
       conSite = this.state.modal.content.website;
     }
 
@@ -190,7 +253,8 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       website: conSite
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConList__WEBPACK_IMPORTED_MODULE_1__["default"], {
       allCons: this.state.listings,
-      getConDetails: this.getConDetails
+      getConDetails: this.getConDetails,
+      formatDate: this.formatDate
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Furry Con Finder"));
   }
 
@@ -275,6 +339,8 @@ class ConList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     } else {
       const allCons = this.props.allCons;
       const conElements = allCons.map(con => {
+        const startDate = this.props.formatDate(con.startDate);
+        const endDate = this.props.formatDate(con.endDate);
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: con.conventionId,
           xs: 12,
@@ -286,7 +352,9 @@ class ConList extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           conName: con.name,
           conCity: con.city,
           conState: con.state,
-          sendId: this.props.getConDetails
+          sendId: this.props.getConDetails,
+          startDate: startDate,
+          endDate: endDate
         }));
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, conElements));
@@ -327,7 +395,7 @@ const Convention = props => {
     className: "card-img p-2",
     variant: "top",
     src: props.conImage
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Title, null, props.conName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Text, null, props.conCity, ", ", props.conState)));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Title, null, props.conName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Text, null, props.startDate, " - ", props.endDate), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__["default"].Text, null, props.conCity, ", ", props.conState)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Convention);

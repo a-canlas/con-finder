@@ -15,6 +15,7 @@ class App extends React.Component {
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.formatDate = this.formatDate.bind(this);
   }
 
   componentDidMount() {
@@ -36,11 +37,62 @@ class App extends React.Component {
     fetch('/api/all-conventions')
       .then(data => data.json())
       .then(conventions => {
+
         this.setState({ listings: conventions });
       })
       .catch(err => {
         console.error(err);
       });
+  }
+
+  formatDate(dateString) {
+    const i = dateString.indexOf('T');
+    const splitDate = dateString.slice(0, i).split('-');
+    const year = splitDate.shift();
+    const oldMonth = splitDate.shift();
+    splitDate.push(year);
+    let month;
+    switch (oldMonth) {
+      case '01':
+        month = 'January';
+        break;
+      case '02':
+        month = 'February';
+        break;
+      case '03':
+        month = 'March';
+        break;
+      case '04':
+        month = 'April';
+        break;
+      case '05':
+        month = 'May';
+        break;
+      case '06':
+        month = 'June';
+        break;
+      case '07':
+        month = 'July';
+        break;
+      case '08':
+        month = 'August';
+        break;
+      case '09':
+        month = 'September';
+        break;
+      case '10':
+        month = 'October';
+        break;
+      case '11':
+        month = 'November';
+        break;
+      case '12':
+        month = 'December';
+        break;
+    }
+    splitDate.unshift(month);
+    return splitDate.join(' ');
+
   }
 
   render() {
@@ -60,8 +112,8 @@ class App extends React.Component {
       conCity = this.state.modal.content.city;
       conState = this.state.modal.content.state;
       conCountry = this.state.modal.content.country;
-      conStart = this.state.modal.content.startDate;
-      conEnd = this.state.modal.content.endDate;
+      conStart = this.formatDate(this.state.modal.content.startDate);
+      conEnd = this.formatDate(this.state.modal.content.endDate);
       conSite = this.state.modal.content.website;
     }
     return (
@@ -79,7 +131,7 @@ class App extends React.Component {
           endDate={conEnd}
           website={conSite}
         />
-        <ConList allCons={this.state.listings} getConDetails={this.getConDetails} />
+        <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
         <p>Furry Con Finder</p>
       </>
     );
