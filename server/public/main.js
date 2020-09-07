@@ -156,58 +156,58 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
   formatDate(dateString) {
     const i = dateString.indexOf('T');
-    const splitDate = dateString.slice(0, i).split();
+    const splitDate = dateString.slice(0, i).split('-');
     const year = splitDate.shift();
     const oldMonth = splitDate.shift();
     splitDate.push(year);
     let month;
 
     switch (oldMonth) {
-      case 1:
+      case '01':
         month = 'January';
         break;
 
-      case 2:
+      case '02':
         month = 'February';
         break;
 
-      case 3:
+      case '03':
         month = 'March';
         break;
 
-      case 4:
+      case '04':
         month = 'April';
         break;
 
-      case 5:
+      case '05':
         month = 'May';
         break;
 
-      case 6:
+      case '06':
         month = 'June';
         break;
 
-      case 7:
+      case '07':
         month = 'July';
         break;
 
-      case 8:
+      case '08':
         month = 'August';
         break;
 
-      case 9:
+      case '09':
         month = 'September';
         break;
 
-      case 10:
+      case '10':
         month = 'October';
         break;
 
-      case 11:
+      case '11':
         month = 'November';
         break;
 
-      case 12:
+      case '12':
         month = 'December';
         break;
     }
