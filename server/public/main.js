@@ -153,6 +153,68 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     });
   }
 
+  formatDate(dateString) {
+    const i = dateString.indexOf('T');
+    const splitDate = dateString.slice(0, i).split();
+    const year = splitDate.shift();
+    const oldMonth = splitDate.shift();
+    splitDate.push(year);
+    let month;
+
+    switch (oldMonth) {
+      case 1:
+        month = 'January';
+        break;
+
+      case 2:
+        month = 'February';
+        break;
+
+      case 3:
+        month = 'March';
+        break;
+
+      case 4:
+        month = 'April';
+        break;
+
+      case 5:
+        month = 'May';
+        break;
+
+      case 6:
+        month = 'June';
+        break;
+
+      case 7:
+        month = 'July';
+        break;
+
+      case 8:
+        month = 'August';
+        break;
+
+      case 9:
+        month = 'September';
+        break;
+
+      case 10:
+        month = 'October';
+        break;
+
+      case 11:
+        month = 'November';
+        break;
+
+      case 12:
+        month = 'December';
+        break;
+    }
+
+    splitDate.unshift(month);
+    return splitDate.join(' ');
+  }
+
   render() {
     let conName = 'name';
     let conAddress = 'address';

@@ -45,7 +45,7 @@ class App extends React.Component {
   }
 
   formatDate(dateString) {
-    const index = dateString.indexOf('T');
+    const i = dateString.indexOf('T');
     const splitDate = dateString.slice(0, i).split();
     const year = splitDate.shift();
     const oldMonth = splitDate.shift();
