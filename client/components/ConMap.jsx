@@ -16,8 +16,8 @@ class ConMap extends React.Component {
         zoom={13}
         style={mapStyles}
         initialCenter={{
-          latitude: 33.634870,
-          longitude: -117.740450
+          lat: 33.634870,
+          lng: -117.740450
         }}
       />
     );
@@ -25,5 +25,5 @@ class ConMap extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: api
+  apiKey: api.mapsKey
 })(ConMap);

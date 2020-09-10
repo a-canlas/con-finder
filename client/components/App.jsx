@@ -1,6 +1,7 @@
 import React from 'react';
 import ConList from './ConList';
 import ConDetails from './ConDetails';
+import ConMap from './ConMap';
 
 class App extends React.Component {
   constructor(props) {
@@ -131,7 +132,8 @@ class App extends React.Component {
           endDate={conEnd}
           website={conSite}
         />
-        <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
+        <ConMap />
+        {/* <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/> */}
         <p>Furry Con Finder</p>
       </>
     );
