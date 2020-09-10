@@ -3,3 +3,6 @@ node_modules/
 
 # .env File
 .env
+
+# api key
+api.js
