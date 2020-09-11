@@ -132,7 +132,7 @@ class App extends React.Component {
           endDate={conEnd}
           website={conSite}
         />
-        <ConMap locations={this.state.listings} />
+        <ConMap locations={this.state.listings} getConDetails={this.getConDetails}/>
         {/* <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/> */}
         <p>Furry Con Finder</p>
       </>

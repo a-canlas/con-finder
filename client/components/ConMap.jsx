@@ -16,7 +16,7 @@ class ConMap extends React.Component {
   plotMarkers() {
     const locations = [...this.props.locations];
     const markers = locations.map(l => {
-      return <Marker key={l.conventionId} id={l.conventionId} position={{ lat: l.latitude, lng: l.longitude }} />;
+      return <Marker key={l.conventionId} id={l.conventionId} position={{ lat: l.latitude, lng: l.longitude }} onClick={() => this.props.getConDetails(l.conventionId)}/>;
     });
     return markers;
   }
