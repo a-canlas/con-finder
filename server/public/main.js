@@ -267,7 +267,9 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       startDate: conStart,
       endDate: conEnd,
       website: conSite
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConMap__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Furry Con Finder"));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConMap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      locations: this.state.listings
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Furry Con Finder"));
   }
 
 }
@@ -407,16 +409,36 @@ const mapStyles = {
 };
 
 class ConMap extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor(props) {
+    super(props);
+    this.plotMarkers = this.plotMarkers.bind(this);
+  }
+
+  plotMarkers() {
+    const locations = [...this.props.locations];
+    const markers = locations.map(l => {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(google_maps_react__WEBPACK_IMPORTED_MODULE_1__["Marker"], {
+        key: l.conventionId,
+        id: l.conventionId,
+        position: {
+          lat: l.latitude,
+          lng: l.longitude
+        }
+      });
+    });
+    return markers;
+  }
+
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(google_maps_react__WEBPACK_IMPORTED_MODULE_1__["Map"], {
       google: this.props.google,
-      zoom: 13,
+      zoom: 5,
       style: mapStyles,
       initialCenter: {
-        lat: 33.634870,
-        lng: -117.740450
+        lat: 38.919465,
+        lng: -102.058846
       }
-    });
+    }, this.plotMarkers());
   }
 
 }
