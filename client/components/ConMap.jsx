@@ -8,18 +8,32 @@ const mapStyles = {
 };
 
 class ConMap extends React.Component {
+  constructor(props) {
+    super(props);
+    this.plotMarkers = this.plotMarkers.bind(this);
+  }
+
+  plotMarkers() {
+    const locations = [...this.props.locations];
+    const markers = locations.map(l => {
+      return <Marker key={l.conventionId} id={l.conventionId} position={{ lat: l.latitude, lng: l.longitude }} />;
+    });
+    return markers;
+  }
 
   render() {
     return (
       <Map
         google={this.props.google}
-        zoom={13}
+        zoom={4}
         style={mapStyles}
         initialCenter={{
-          lat: 33.634870,
-          lng: -117.740450
+          lat: 38.919465,
+          lng: -102.058846
         }}
-      />
+      >
+        {this.plotMarkers()}
+      </Map>
     );
   }
 }
