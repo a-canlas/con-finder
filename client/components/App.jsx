@@ -11,7 +11,8 @@ class App extends React.Component {
       modal: {
         visible: false,
         content: null
-      }
+      },
+      view: 'list'
     };
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
@@ -133,7 +134,7 @@ class App extends React.Component {
           website={conSite}
         />
         <ConMap locations={this.state.listings} getConDetails={this.getConDetails}/>
-        {/* <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/> */}
+        <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
         <p>Furry Con Finder</p>
       </>
     );
