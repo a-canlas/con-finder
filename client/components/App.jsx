@@ -11,7 +11,8 @@ class App extends React.Component {
       modal: {
         visible: false,
         content: null
-      }
+      },
+      view: 'list'
     };
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
@@ -117,26 +118,46 @@ class App extends React.Component {
       conEnd = this.formatDate(this.state.modal.content.endDate);
       conSite = this.state.modal.content.website;
     }
-    return (
-      <>
-        <ConDetails
-          visible={this.state.modal.visible}
-          hide={this.closeModal}
-          conName={conName}
-          conImage={conImage}
-          address={conAddress}
-          city={conCity}
-          state={conState}
-          country={conCountry}
-          startDate={conStart}
-          endDate={conEnd}
-          website={conSite}
-        />
-        <ConMap locations={this.state.listings} />
-        {/* <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/> */}
-        <p>Furry Con Finder</p>
-      </>
-    );
+
+    if (this.state.view === 'list') {
+      return (
+        <>
+          <ConDetails
+            visible={this.state.modal.visible}
+            hide={this.closeModal}
+            conName={conName}
+            conImage={conImage}
+            address={conAddress}
+            city={conCity}
+            state={conState}
+            country={conCountry}
+            startDate={conStart}
+            endDate={conEnd}
+            website={conSite}
+          />
+          <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
+        </>
+      );
+    } else if (this.state.view === 'map') {
+      return (
+        <>
+          <ConDetails
+            visible={this.state.modal.visible}
+            hide={this.closeModal}
+            conName={conName}
+            conImage={conImage}
+            address={conAddress}
+            city={conCity}
+            state={conState}
+            country={conCountry}
+            startDate={conStart}
+            endDate={conEnd}
+            website={conSite}
+          />
+          <ConMap locations={this.state.listings} getConDetails={this.getConDetails}/>
+        </>
+      );
+    }
   }
 }
 
