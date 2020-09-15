@@ -2,6 +2,7 @@ import React from 'react';
 import ConList from './ConList';
 import ConDetails from './ConDetails';
 import ConMap from './ConMap';
+import ViewButton from './ViewButton';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class App extends React.Component {
     this.getConDetails = this.getConDetails.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.formatDate = this.formatDate.bind(this);
+    this.toggleView = this.toggleView.bind(this);
   }
 
   componentDidMount() {
@@ -97,6 +99,10 @@ class App extends React.Component {
 
   }
 
+  toggleView(view) {
+    this.setState({ view: view });
+  }
+
   render() {
     let conName = 'name';
     let conAddress = 'address';
@@ -136,6 +142,7 @@ class App extends React.Component {
             website={conSite}
           />
           <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
+          <ViewButton viewName="map" toggleView={this.toggleView} />
         </>
       );
     } else if (this.state.view === 'map') {
