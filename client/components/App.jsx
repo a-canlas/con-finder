@@ -141,8 +141,8 @@ class App extends React.Component {
             endDate={conEnd}
             website={conSite}
           />
-          <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
           <ViewButton viewName="map" toggleView={this.toggleView} />
+          <ConList allCons={this.state.listings} getConDetails={this.getConDetails} formatDate={this.formatDate}/>
         </>
       );
     } else if (this.state.view === 'map') {
@@ -161,6 +161,7 @@ class App extends React.Component {
             endDate={conEnd}
             website={conSite}
           />
+          <ViewButton viewName="list" toggleView={this.toggleView} />
           <ConMap locations={this.state.listings} getConDetails={this.getConDetails}/>
         </>
       );
