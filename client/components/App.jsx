@@ -93,6 +93,8 @@ class App extends React.Component {
       case '12':
         month = 'December';
         break;
+      default:
+        month = 'January';
     }
     splitDate.unshift(month);
     return splitDate.join(' ');
