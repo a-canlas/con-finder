@@ -118,7 +118,7 @@ class App extends React.Component {
   getLocation() {
     const success = pos => {
       const crds = pos.coords;
-      this.setState({ location: { lat: crds.latitude, lng: crds.longitude } });
+      this.setState({ userLocation: { lat: crds.latitude, lng: crds.longitude } });
     };
     const error = err => {
       console.error(err);
