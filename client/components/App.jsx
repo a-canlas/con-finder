@@ -18,11 +18,11 @@ class App extends React.Component {
         lat: null,
         lng: null
       },
-      distance: {
-        distanceOn: false,
-        distanceValue: null
-      }
+      sort: 'none',
+      distanceValue: null
+
     };
+
     this.getConventions = this.getConventions.bind(this);
     this.getLocation = this.getLocation.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
