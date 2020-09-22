@@ -14,7 +14,10 @@ class App extends React.Component {
         content: null
       },
       view: 'list',
-      location: null,
+      location: {
+        lat: null,
+        lng: null
+      },
       distance: {
         distanceOn: false,
         distanceValue: null
