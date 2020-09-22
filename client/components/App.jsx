@@ -13,7 +13,8 @@ class App extends React.Component {
         visible: false,
         content: null
       },
-      view: 'list'
+      view: 'list',
+      location: null
     };
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
