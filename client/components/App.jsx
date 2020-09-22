@@ -14,7 +14,7 @@ class App extends React.Component {
         content: null
       },
       view: 'list',
-      location: {
+      userLocation: {
         lat: null,
         lng: null
       },
