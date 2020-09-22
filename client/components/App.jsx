@@ -14,7 +14,11 @@ class App extends React.Component {
         content: null
       },
       view: 'list',
-      location: null
+      location: null,
+      distance: {
+        distanceOn: false,
+        distanceValue: null
+      }
     };
     this.getConventions = this.getConventions.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
