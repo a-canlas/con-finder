@@ -13,9 +13,18 @@ class App extends React.Component {
         visible: false,
         content: null
       },
-      view: 'list'
+      view: 'list',
+      userLocation: {
+        lat: null,
+        lng: null
+      },
+      sort: 'none',
+      distanceValue: null
+
     };
+
     this.getConventions = this.getConventions.bind(this);
+    this.getLocation = this.getLocation.bind(this);
     this.getConDetails = this.getConDetails.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.formatDate = this.formatDate.bind(this);
@@ -24,6 +33,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getConventions();
+    this.getLocation();
   }
 
   getConDetails(id) {
@@ -103,6 +113,17 @@ class App extends React.Component {
 
   toggleView(view) {
     this.setState({ view: view });
+  }
+
+  getLocation() {
+    const success = pos => {
+      const crds = pos.coords;
+      this.setState({ userLocation: { lat: crds.latitude, lng: crds.longitude } });
+    };
+    const error = err => {
+      console.error(err);
+    };
+    navigator.geolocation.getCurrentPosition(success, error);
   }
 
   render() {
